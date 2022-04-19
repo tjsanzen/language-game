@@ -39,6 +39,7 @@ function btnProvideQuestion() {
   
 // define the parts of the question further i think
   document.getElementById("question").innerHTML= randomQuestion.question;
+  document.getElementById("audio").innerHTML= randomQuestion.audio;
   document.getElementById("answerA").value= answers[0];
   document.getElementById("answerA").innerHTML= answers[0];
   document.getElementById("answerB").value= answers[1];
@@ -49,7 +50,7 @@ function btnProvideQuestion() {
 }
 
 // what do when play audio button clicked
-document.getElementById("audio").onclick = function () {
+document.getElementById("audio").onclick = function audio_clicked() {
     new Audio(randomQuestion.audio);
     audio.play();
 }
