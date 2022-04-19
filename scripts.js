@@ -51,8 +51,7 @@ function btnProvideQuestion() {
 
 // what do when play audio button clicked
 function audio_clicked() {
-  var audio = document.getElementById("audio").play;
-        audio.play();
+      audio.play();
 }
 
 // what to do when answer a button clicked
