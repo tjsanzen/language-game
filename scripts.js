@@ -76,7 +76,6 @@ function checkAnswer(answer) {
     adjustScore(true);
     btnProvideQuestion();
   } else { 
-    alert("Loser!");
     adjustScore(false);
   }	  
 }
