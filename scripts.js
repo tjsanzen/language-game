@@ -75,13 +75,13 @@
   const submitButton = document.getElementById('submit');
   const myQuestions = [
     {
-      question: "Who invented JavaScript?",
+      question: "What language is this?",
       answers: {
-        a: "Douglas Crockford",
-        b: "Sheryl Sandberg",
-        c: "Brendan Eich"
+        a: "Somali",
+        b: "Bahrani",
+        c: "Egyptian Arabic"
       },
-      correctAnswer: "c"
+      correctAnswer: "a"
     },
     {
       question: "Which one of these is a JavaScript package manager?",
