@@ -1,12 +1,8 @@
 //variables
 var quiz = [];
-quiz[0] = new Question("𐒛𐒆𐒖𐒒𐒖𐒔𐒖 𐒊𐒖𐒑𐒑𐒛𐒒𐒂𐒕𐒈 𐒓𐒚𐒄𐒓 𐒊𐒖𐒉𐒛 𐒘𐒈𐒖𐒌𐒝 𐒄𐒙𐒇 𐒖𐒔 𐒏𐒖𐒒𐒖 𐒈𐒘𐒑𐒖𐒒 𐒄𐒖𐒌𐒌𐒖 𐒉𐒖𐒇𐒖𐒍𐒂𐒖 𐒘𐒕𐒙 𐒄𐒚𐒎𐒓𐒎𐒖𐒆𐒖 𐒓𐒖𐒄𐒛 𐒖𐒐𐒐𐒗 (𐒘𐒐𐒛𐒔) 𐒈𐒕𐒕𐒖𐒕 𐒖𐒎𐒝𐒒 𐒘𐒕𐒙 𐒓𐒖𐒋𐒕𐒘, 𐒓𐒛𐒒𐒖 𐒘𐒒 𐒎𐒙𐒍 𐒐𐒖 𐒖𐒇𐒏𐒛 𐒎𐒙𐒍𐒏𐒖 𐒏𐒖𐒐𐒗 𐒚𐒐𐒖 𐒊𐒖𐒎𐒑𐒛 𐒈𐒘 𐒓𐒖𐒐𐒛𐒐𐒂𐒘𐒒𐒘𐒑𐒙 𐒖𐒔.", "Somali", "Bahrani Arabic", "Amharic");
-quiz[1] = new Question("What color is blood?", "Red", "White", "Green");
-quiz[2] = new Question("What color is grass?", "Green", "White", "Red");
-quiz[3] = new Question("How many legs does a spider have?", "8", "6", "4");
-quiz[4] = new Question("Who is the king of the Netherlands?", "Willem-Alexander", "Willem-Alexzelf", "Willem-Alexniemand");
-quiz[5] = new Question("What is 2-2?", "0", "2", "4");
-quiz[6] = new Question("What was Vincent van Gogh?", "Artist", "Baker", "Jobless");
+quiz[0] = new Question("Hola", "Spanish", "Italian", "Cyric");
+quiz[1] = new Question("Hello", "English", "Spanish", "French");
+quiz[2] = new Question("Terve", "Finnish", "Norwegian", "Swedish");
 var randomQuestion;
 var answers = [];
 var currentScore = 0;
