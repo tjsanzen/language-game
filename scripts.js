@@ -1,8 +1,8 @@
 //variables
 var quiz = [];
-quiz[0] = new Question("Hola", "Spanish", "Italian", "Cyric");
-quiz[1] = new Question("Hello", "English", "Spanish", "French");
-quiz[2] = new Question("Terve", "Finnish", "Norwegian", "Swedish");
+quiz[0] = new Question("Hola", "languages/spanish.mp3", "Spanish", "Italian", "Cyric");
+quiz[1] = new Question("Hello", "languages/english.mp3", "English", "Spanish", "French");
+quiz[2] = new Question("Haye", "languages/udhr_somali.mp3", "Somali", "Norwegian", "Swedish");
 var randomQuestion;
 var answers = [];
 var currentScore = 0;
@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   btnProvideQuestion();
 });
 
-function Question(question,rightAnswer,wrongAnswer1,wrongAnswer2) {
+function Question(question,audio,rightAnswer,wrongAnswer1,wrongAnswer2) {
     this.question = question;
+    this.audio = audio;
     this.rightAnswer = rightAnswer;
     this.wrongAnswer1 = wrongAnswer1;
     this.wrongAnswer2 = wrongAnswer2;
@@ -38,6 +39,11 @@ function btnProvideQuestion() {
   document.getElementById("answerC").value= answers[2];
   document.getElementById("answerC").innerHTML= answers[2];
 
+}
+
+function audio_clicked() {
+  var audio = document.getElementById("audio").value;
+  audio.play()
 }
 
 function answerA_clicked() {
@@ -72,6 +78,8 @@ function checkAnswer(answer) {
     adjustScore(true);
     btnProvideQuestion();
   } else { 
+    
     adjustScore(false);
   }	  
 }
+
