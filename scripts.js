@@ -1,112 +1,82 @@
-(function(){
-  function buildQuiz(){
-    // variable to store the HTML output
-    const output = [];
+//variables
+var quiz = [];
+quiz[0] = new Question("What is 1/4 of 100?", "25", "24", "23");
+quiz[1] = new Question("What color is blood?", "Red", "White", "Green");
+quiz[2] = new Question("What color is grass?", "Green", "White", "Red");
+quiz[3] = new Question("How many legs does a spider have?", "8", "6", "4");
+quiz[4] = new Question("Who is the king of the Netherlands?", "Willem-Alexander", "Willem-Alexzelf", "Willem-Alexniemand");
+quiz[5] = new Question("What is 2-2?", "0", "2", "4");
+quiz[6] = new Question("What was Vincent van Gogh?", "Artist", "Baker", "Jobless");
+var randomQuestion;
+var answers = [];
+var currentScore = 0;
 
-    // for each question...
-    myQuestions.forEach(
-      (currentQuestion, questionNumber) => {
+document.addEventListener("DOMContentLoaded", function(event) { 
+  btnProvideQuestion();
+});
 
-        // variable to store the list of possible answers
-        const answers = [];
+function Question(question,rightAnswer,wrongAnswer1,wrongAnswer2) {
+    this.question = question;
+    this.rightAnswer = rightAnswer;
+    this.wrongAnswer1 = wrongAnswer1;
+    this.wrongAnswer2 = wrongAnswer2;
+};
 
-        // and for each available answer...
-        for(letter in currentQuestion.answers){
+function shuffle(o) {
+	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
 
-          // ...add an HTML radio button
-          answers.push(
-            `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-            </label>`
-          );
-        }
+function btnProvideQuestion() { 
+  
+	var randomNumber = Math.floor(Math.random()*quiz.length);
+	randomQuestion = quiz[randomNumber]; //getQuestion
+  answers = [randomQuestion.rightAnswer, randomQuestion.wrongAnswer1, randomQuestion.wrongAnswer2];
+  shuffle(answers);
+  
+  document.getElementById("question").innerHTML= randomQuestion.question;
+  document.getElementById("answerA").value= answers[0];
+  document.getElementById("answerA").innerHTML= answers[0];
+  document.getElementById("answerB").value= answers[1];
+  document.getElementById("answerB").innerHTML= answers[1];
+  document.getElementById("answerC").value= answers[2];
+  document.getElementById("answerC").innerHTML= answers[2];
 
-        // add this question and its answers to the output
-        output.push(
-          `<div class="question"> ${currentQuestion.question} </div>
-          <div class="answers"> ${answers.join('')} </div>`
-        );
-      }
-    );
+}
 
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join('');
+function answerA_clicked() {
+  var answerA = document.getElementById("answerA").value;
+  	checkAnswer(answerA);
+}
+
+function answerB_clicked() {
+		var answerB = document.getElementById("answerB").value;
+  checkAnswer(answerB);
+}
+function answerC_clicked() {
+  var answerC = document.getElementById("answerC").value;
+  	
+		checkAnswer(answerC);
+}
+
+function adjustScore(isCorrect) {
+  debugger;
+  if (isCorrect) {
+    currentScore++;
+  } else {
+    if (currentScore > 0) {
+      currentScore--;
+  	}
   }
+  document.getElementById("score").innerHTML = currentScore;
+}
 
-  function showResults(){
-
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll('.answers');
-
-    // keep track of user's answers
-    let numCorrect = 0;
-
-    // for each question...
-    myQuestions.forEach( (currentQuestion, questionNumber) => {
-
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-      // if answer is correct
-      if(userAnswer === currentQuestion.correctAnswer){
-        // add to the number of correct answers
-        numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = 'lightgreen';
-      }
-      // if answer is wrong or blank
-      else{
-        // color the answers red
-        answerContainers[questionNumber].style.color = 'red';
-      }
-    });
-
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-  }
-
-  const quizContainer = document.getElementById('quiz');
-  const resultsContainer = document.getElementById('results');
-  const submitButton = document.getElementById('submit');
-  const myQuestions = [
-    {
-      question: "What language is this?",
-      answers: {
-        a: "Somali",
-        b: "Bahrani",
-        c: "Egyptian Arabic"
-      },
-      correctAnswer: "a"
-    },
-    {
-      question: "Which one of these is a JavaScript package manager?",
-      answers: {
-        a: "Node.js",
-        b: "TypeScript",
-        c: "npm"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Which tool can you use to ensure code quality?",
-      answers: {
-        a: "Angular",
-        b: "jQuery",
-        c: "RequireJS",
-        d: "ESLint"
-      },
-      correctAnswer: "d"
-    }
-  ];
-
-  // Kick things off
-  buildQuiz();
-
-  // Event listeners
-  submitButton.addEventListener('click', showResults);
-})();
+function checkAnswer(answer) {  
+  if (answer == randomQuestion.rightAnswer) {
+    adjustScore(true);
+    btnProvideQuestion();
+  } else { 
+    alert("Loser!");
+    adjustScore(false);
+  }	  
+}
