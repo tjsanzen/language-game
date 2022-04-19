@@ -10,3 +10,5 @@ Declaration of Human Rights, taken from Omniglot.com.
 Another very cool site to check out is https://www.localingual.com/
 which allows you to select a country and listen to words in each
 language with that accent. 
+
+Inspired by a Reddit thread and code by savant on codepen.io
